@@ -26,5 +26,15 @@
                           (when (string-match "conkeror" (buffer-file-name))
                             (conkeror-minor-mode 1))))
 
+(el-get-install 'moz-repl)
+
+(use-package moz
+  :init (progn
+          (autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
+
+          (add-hook 'javascript-mode-hook 'javascript-custom-setup)
+          (defun javascript-custom-setup ()
+            (moz-minor-mode 1))))
+
 (provide 'conkeror-pack)
 ;;; conkeror-pack.el ends here
